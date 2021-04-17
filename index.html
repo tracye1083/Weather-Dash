@@ -8,41 +8,104 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/9b22d73af0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./Assets/css/style.css" />
     <title>Weather Dash</title>
 </head>
 
 <body>
 
-    <header>
-        <h1 class="has-text-centered">Weather Dash</h1>
-        <div class="wrapper">
-            <div class="divider div-transparent"></div>
-        </div>
-    </header>
-
-    <div>
-        <!-- search bar container -->
-        <div>
-            <!-- search bar and button -->
-            <div class="field has-addons">
-                <div class="control">
-                    <input class="input" type="text" placeholder="Enter a City">
-                </div>
-                <div class="control">
-                    <a class="button is-info">
-                    Search
-                  </a>
+    <!-- header -->
+    <div class="container mainContainer">
+        <div class="hero">
+            <h1 class="has-text-centered">Weather Dash</h1>
+            <div class="wrapper">
+                <div class="divider div-transparent">
                 </div>
             </div>
         </div>
-        <div>
-            <!-- local storage history list -->
+
+
+        <!-- container for search and recent searches -->
+        <div class="container level">
+            <div class="columns level-left">
+                <div class="is-one-third-desktop is-two-thirds-tablet is-two-thirds-mobile container">
+                    <div class="columns">
+                        <div class="field">
+                            <!-- search bar and button -->
+                            <label id="search" class="label mr-5">Search for City</label>
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <input class="input" id="userCity" type="text" placeholder="Search">
+                                </div>
+                                <div class="control">
+                                    <a class="button is-info" id="bttnSearch"><i class="fas fa-search" aria-hidden="true"></i></a>
+                                </div>
+                                <div id="search" class="columns">
+                                    <div id="recentSearches" class="column is-two-thirds-desktop is-full-tablet is-full-mobile">
+                                        <!-- recent searches will be displayed here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Current Weather Conditions -->
+                <div class="containerConditions col-md-8 col-sm-12 float-right ">
+                    <div class="columns">
+                        <div class="column" id="currentConditions">
+                            <!-- content will be appended here-->
+                        </div>
+                        <div class="column">
+                            <span id="iconSpan"></span><img style="font-size: 5rem" id="wicon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- display 5 days forecast -->
+        <div class="daysForecastheader columns">
+            <div class="column">
+                <h3 id="forecasth3">5 days Forecast
+                    <h3>
+            </div>
         </div>
     </div>
-
-
-
+    <div class="columns justify-content-between daysForecast">
+        <div id="forecastDiv1" class="column is-one-fifth">
+            <h5 id=date1></h5>
+            <p id="temperature1" class="temperature"></p>
+            <img id="wicon1" alt="weather icon">
+            <p id="humidity1" class="humidity"></p>
+        </div>
+        <div id="forecastDiv2" class="column is-one-fifth">
+            <h5 id=date2></h5>
+            <p id="temperature2" class=" temperature mt-1"></p>
+            <img id="wicon2" alt="weather icon">
+            <p id="humidity2" class="humidity"></p>
+        </div>
+        <div id="forecastDiv3" class="column is-one-fifth">
+            <h5 id=date3></h5>
+            <p id="temperature3" class="mt-1"></p>
+            <img id="wicon3" alt="weather icon">
+            <p id="humidity3" class="humidity"></p>
+        </div>
+        <div id="forecastDiv4" class="column is-one-fifth">
+            <h5 class="text-center" id=date4></h5>
+            <p id="temperature4" class="mt-1 temperature"></p>
+            <img id="wicon4" alt="weather icon">
+            <p id="humidity4" class="humidity"></p>
+        </div>
+        <div id="forecastDiv5" class="column is-one-fifth">
+            <h5 class=text-center id=date5></h5>
+            <p id="temperature5" class="mt-2 temperature"></p>
+            <img id="wicon5" alt="weather icon">
+            <p id="humidity5" class="humidity"></p>
+        </div>
+    </div>
+    </div>
+    </div>
     <!-- display results -->
     <div class="tile is-ancestor">
         <div class="tile is-parent">
@@ -52,11 +115,8 @@
             </article>
         </div>
     </div>
-
-
-
     <!-- 5 day forcast results container -->
-    <div class="tile is-ancestor">
+    <div class="tile is-ancestor daysForecast">
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <p class="title">One</p>
@@ -96,6 +156,7 @@
             </p>
         </div>
     </footer>
+    </div>
 
     <script type="text/javascript" src="./Assets/js/script.js"></script>
 
