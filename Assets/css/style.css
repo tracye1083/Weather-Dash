@@ -42,5 +42,16 @@ h5 {
 
 h3 {
     text-align: center;
-    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.containerConditions {
+    width: 620px;
+}
+
+#currentConditions {
+    width: 500px;
 }
