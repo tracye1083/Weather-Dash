@@ -29,7 +29,8 @@ body {
 }
 
 h1 {
-    font-size: 2.75rem;
+    font-size: 3.25rem;
+    font-weight: 500;
     color: rgb(72, 8, 175);
 }
 
@@ -37,15 +38,27 @@ h2,
 h3,
 h4,
 h5 {
+    font-weight: bold;
     color: rgb(72, 8, 175);
 }
 
 h3 {
+    /* font-size: 2.5rem; */
     text-align: center;
 }
 
+h5 {
+    font-size: 1.30rem;
+}
+
 p {
-    font-size: 1rem;
+    font-size: 1.25rem;
+}
+
+.box {
+    background-color: #e4cffcce;
+    margin: 2px;
+    padding: 2px;
 }
 
 .containerConditions {
@@ -54,4 +67,8 @@ p {
 
 #currentConditions {
     width: 500px;
+}
+
+#forecasth3 {
+    margin-top: 10px;
 }

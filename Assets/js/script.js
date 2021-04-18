@@ -23,52 +23,52 @@ function currentConditions(event) {
     let city = $("#userCity").val().trim();
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=f042c27bf197a3b291c2290d80b2dd40";
     $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
 
-        //content now it's displayed with the response we got back
-        $(".containerConditions").show();
-        $(".daysForecastheader").show();
-        $(".daysForecast").show();
+            //content now it's displayed with the response we got back
+            $(".containerConditions").show();
+            $(".daysForecastheader").show();
+            $(".daysForecast").show();
 
-        //creating a variable for each info I want to display in my page
-        let cityName = response.name;
-        let temperature = response.main.temp.toFixed(0);
-        let humidity = response.main.humidity;
-        let windSpeed = response.wind.speed;
-        let lon = response.coord.lon;
-        let lat = response.coord.lat;
+            //creating a variable for each info I want to display in my page
+            let cityName = response.name;
+            let temperature = response.main.temp.toFixed(0);
+            let humidity = response.main.humidity;
+            let windSpeed = response.wind.speed;
+            let lon = response.coord.lon;
+            let lat = response.coord.lat;
 
-        uvIndex(lat, lon)
+            uvIndex(lat, lon)
 
-        //creating  elements and appending the information stored in the variables above
-        let $currentConditions = $("<div>");
-        let $cityName = $("<h3>").text(cityName).append(" " + timeNow);
-        let $temperature = $("<p>").text("Temperature: " + temperature + "°F");
-        let $humidity = $("<p>").text("Humidity: " + humidity + "%");
-        let $windSpeed = $("<p>").text("Wind Speed: " + windSpeed + " MPH");
+            //creating  elements and appending the information stored in the variables above
+            let $currentConditions = $("<div>");
+            let $cityName = $("<h3>").text(cityName).append(" " + timeNow);
+            let $temperature = $("<p>").text("Temperature: " + temperature + "°F");
+            let $humidity = $("<p>").text("Humidity: " + humidity + "%");
+            let $windSpeed = $("<p>").text("Wind Speed: " + windSpeed + " MPH");
 
-        iconw.attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-        $cityName.attr("style", "font-weight: bolder");
+            iconw.attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            $cityName.attr("style", "font-weight: bolder");
 
-        $("#currentConditions").empty()
+            $("#currentConditions").empty()
 
-        $("#iconSpan").append(iconw);
-        iconw.attr("style", "font-size:8em")
+            $("#iconSpan").append(iconw);
+            iconw.attr("style", "font-size:10em")
 
-        $currentConditions.prepend($cityName, $temperature, $humidity, $windSpeed)
-        $("#currentConditions").append($currentConditions);
+            $currentConditions.prepend($cityName, $temperature, $humidity, $windSpeed)
+            $("#currentConditions").append($currentConditions);
 
-        let recentSearch = $("<button>").text(cityName);
-        recentSearch.addClass("level-left level-item button is-info");
-        $("#recentSearches").prepend(recentSearch);
+            let recentSearch = $("<button>").text(cityName);
+            recentSearch.addClass("level-left level-item button is-info");
+            $("#recentSearches").prepend(recentSearch);
 
-        let citiesSearched = JSON.parse(localStorage.getItem("city-search") || [])
-        citiesSearched.push(recentSearch);
-        localStorage.setItem("city-search", JSON.stringify(citiesSearched));
-    })
-    recentSearches();
+            let citiesSearched = JSON.parse(localStorage.getItem("city-search") || [])
+            citiesSearched.push(recentSearch);
+            localStorage.setItem("city-search", JSON.stringify(citiesSearched));
+        })
+        // recentSearches();
     forecast5Days()
 }
 
@@ -114,5 +114,20 @@ function uvIndex(lat, lon) {
         let uvIndex = response.value
         let $uvIndex = $("<p>").text("Uv Index: " + uvIndex);
         $("#currentConditions").append($uvIndex)
+            // let uvColor = setUVIndexColor(uvIndex);
+            // uvIndexEl.text(response.value);
+            // uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`);
     })
 }
+
+// function setUVIndexColor(uvi) {
+//     if (uvi < 3) {
+//         return 'green';
+//     } else if (uvi >= 3 && uvi < 6) {
+//         return 'yellow';
+//     } else if (uvi >= 6 && uvi < 8) {
+//         return 'orange';
+//     } else if (uvi >= 8 && uvi < 11) {
+//         return 'red';
+//     } else return 'purple';
+// }
